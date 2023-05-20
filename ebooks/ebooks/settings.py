@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'versatileimagefield',
+    'web',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +56,7 @@ ROOT_URLCONF = 'ebooks.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -100,6 +102,21 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
+
+VERSATILEIMAGEFIELD_SETTINGS = {
+	'cache_length': 2592000,
+	'cache_name': 'versatileimagefield_cache',
+	'jpeg_resize_quality': 70,
+	'sized_directory_name': '__sized__',
+	'filtered_directory_name': '__filtered__',
+	'placeholder_directory_name': '__placeholder__',
+	'create_images_on_demand': True,
+	'image_key_post_processor': None,
+	'progressive_jpeg': False
+}
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -115,7 +132,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+STATIC_URL = "/static/"
+STATIC_FILE_ROOT = BASE_DIR / "static"
+STATICFILES_DIRS = ((BASE_DIR / "static"),)
+STATIC_ROOT = BASE_DIR / "assets"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

@@ -1,0 +1,256 @@
+﻿
+{% extends 'web/partials/base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Start breadcrumb area -->
+    {% comment %} <div class="ht__breadcrumb__area bg-image--5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__inner text-center">
+                        <h2 class="breadcrumb-title">Shop List</h2>
+                        <nav class="breadcrumb-content">
+                            <a class="breadcrumb_item" href="index-2.html">Home</a>
+                            <span class="brd-separator">/</span>
+                            <span class="breadcrumb_item active">Shop List</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End breadcrumb area --> {% endcomment %}
+    <!-- Start Shop Page -->
+    <div class="page-shop-sidebar left--sidebar bg--white section-padding--lg mt--120">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-12 order-2 order-lg-1 md-mt-40 sm-mt-40">
+                    <div class="shop__sidebar">
+                        <aside class="widget__categories products--cat">
+                            <h3 class="widget__title">Product Categories</h3>
+                            <ul>
+                                <li><a href="#">Biography <span>(3)</span></a></li>
+                                <li><a href="#">Business <span>(4)</span></a></li>
+                                <li><a href="#">Cookbooks <span>(6)</span></a></li>
+                                <li><a href="#">Health & Fitness <span>(7)</span></a></li>
+                                <li><a href="#">History <span>(8)</span></a></li>
+                                <li><a href="#">Mystery <span>(9)</span></a></li>
+                                <li><a href="#">Inspiration <span>(13)</span></a></li>
+                                <li><a href="#">Romance <span>(20)</span></a></li>
+                                <li><a href="#">Fiction/Fantasy <span>(22)</span></a></li>
+                                <li><a href="#">Self-Improvement <span>(13)</span></a></li>
+                                <li><a href="#">Humor Books <span>(17)</span></a></li>
+                                <li><a href="#">Harry Potter <span>(20)</span></a></li>
+                                <li><a href="#">Land of Stories <span>(34)</span></a></li>
+                                <li><a href="#">Kids' Music <span>(60)</span></a></li>
+                                <li><a href="#">Toys & Games <span>(3)</span></a></li>
+                                <li><a href="#">hoodies <span>(3)</span></a></li>
+                            </ul>
+                        </aside>
+                        <aside class="widget__categories pro--range">
+                            <h3 class="widget__title">Filter by price</h3>
+                            <div class="content-shopby">
+                                <div class="price_filter s-filter clear">
+                                    <form action="{% url 'web:book' %}" method="get">
+                                        <div id="slider-range"></div>
+                                        <div class="slider__range--output">
+                                            <div class="price__output--wrap">
+                                                <div class="price--output">
+                                                    <span>Price :</span>
+                                                    <input type="text" id="amount" class="amount-range" readonly>
+                                                    <input type="hidden" name="min_price" id="min-price-input" value="{{ request.GET.min_price }}">
+                                                    <input type="hidden" name="max_price" id="max-price-input" value="{{ request.GET.max_price }}">
+                                                </div>
+                                            </div>
+                                            <div class="price--filter">
+                                                <button type="submit">Filter</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    {% comment %} <form action="{% url 'web:book' %}" method="get">
+                                        <label for="year">Year:</label>
+                                        <input type="text" name="year" id="year" value="{{ request.GET.year }}">
+                                        <br>
+                                        <label for="language">Language:</label>
+                                        <input type="text" name="language" id="language" value="{{ request.GET.language }}">
+                                        <br>
+                                        <button type="submit">Filter</button>
+                                    </form> {% endcomment %}
+                                </div>
+                            </div>
+                        </aside>
+                        <aside class="widget__categories products--tag">
+                            <h3 class="widget__title">Product Tags</h3>
+                            <ul>
+                                <li><a href="#">Biography</a></li>
+                                <li><a href="#">Business</a></li>
+                                <li><a href="#">Cookbooks</a></li>
+                                <li><a href="#">Health & Fitness</a></li>
+                                <li><a href="#">History</a></li>
+                                <li><a href="#">Mystery</a></li>
+                                <li><a href="#">Inspiration</a></li>
+                                <li><a href="#">Religion</a></li>
+                                <li><a href="#">Fiction</a></li>
+                                <li><a href="#">Fantasy</a></li>
+                                <li><a href="#">Music</a></li>
+                                <li><a href="#">Toys</a></li>
+                                <li><a href="#">Hoodies</a></li>
+                            </ul>
+                        </aside>
+                       
+                    </div>
+                </div>
+                <div class="col-lg-9 col-12 order-1 order-lg-2">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div
+                                    class="shop__list__wrapper d-flex flex-wrap flex-md-nowrap justify-content-between">
+                                <div class="shop__list nav justify-content-center" role="tablist">
+                                    <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-grid" role="tab"><i
+                                            class="fa fa-th"></i></a>
+                                    <a class="nav-item nav-link active" data-bs-toggle="tab" href="#nav-list"
+                                       role="tab"><i class="fa fa-list"></i></a>
+                                </div>
+                                <p>Showing 1–12 of 40 results</p>
+                                <div class="orderby__wrapper">
+                                    <span>Sort By</span>
+                                    <select class="shot__byselect">
+                                        <option>Default sorting</option>
+                                        <option>HeadPhone</option>
+                                        <option>Furniture</option>
+                                        <option>Jewellery</option>
+                                        <option>Handmade</option>
+                                        <option>Kids</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab__container tab-content">
+                        
+                        <div class="shop-grid tab-pane fade" id="nav-grid" role="tabpanel">
+                           
+                            <div class="row">
+                                <!-- Start Single Product -->
+                                
+                                {% for book in book %}
+                                <div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
+                                   
+                                    <div class="product__thumb">
+                                        <a class="first__img" href="{% url 'web:shop_detail' book.id %}"><img
+                                                src="{{book.book_image.crop.300x300}}" alt="product image"></a>
+                                        <a class="second__img animation1" href="{% url 'web:shop_detail' book.id %}"><img
+                                                src="{{book.book_hoverimage.crop.300x300}}" alt="product image"></a>
+                                        <div class="hot__box">
+                                            <span class="hot-label">{{book.book_category}}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="product__content content--center">
+                                        <h4><a href="{% url 'web:shop_detail' book.id %}">{{book.book_name}}</a></h4>
+                                        <ul class="price d-flex">
+                                            <li>${{book.original_price}}</li>
+                                            <li class="old_price">{{book.del_price}}</li>
+                                        </ul>
+                                        <div class="action">
+                                            <div class="actions_inner">
+                                                <ul class="add_to_links">
+                                                    <li><a class="cart" href="cart.html"><i
+                                                            class="bi bi-shopping-bag4"></i></a></li>
+                                                    <li><a class="wishlist" href="wishlist.html"><i
+                                                            class="bi bi-shopping-cart-full"></i></a></li>
+                                                    <li><a class="compare" href="#"><i
+                                                            class="bi bi-heart-beat"></i></a></li>
+                                                    <li><a data-bs-toggle="" title="Quick View"
+                                                           class=""
+                                                           href="{{book.file}}"><i class="bi bi-search"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product__hover--content">
+                                            <ul class="rating d-flex">
+                                                <li class="on"><i class="fa fa-star-o"></i></li>
+                                                <li class="on"><i class="fa fa-star-o"></i></li>
+                                                <li class="on"><i class="fa fa-star-o"></i></li>
+                                                <li><i class="fa fa-star-o"></i></li>
+                                                <li><i class="fa fa-star-o"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                                {% endfor %}
+                                
+                                <!-- End Single Product -->
+                             
+                               
+                            </div>
+                            {% comment %} <ul class="wn__pagination">
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
+                            </ul> {% endcomment %}
+                        </div>
+                        <div class="shop-grid tab-pane fade show active" id="nav-list" role="tabpanel">
+                            <div class="list__view__wrapper">
+                               
+
+                                {% for book in book %}
+                                <!-- Start Single Product -->
+                                <div class="list__view mt--40">
+                                    <div class="thumb">
+                                        <a class="first__img" href="{% url 'web:shop_detail' book.id %}"><img
+                                                src="{{book.book_image.crop.300x300}}" alt="product images"></a>
+                                        <a class="second__img animation1" href="{% url 'web:shop_detail' book.id %}"><img
+                                                src="{{book.book_hoverimage.crop.300x300}}" alt="product images"></a>
+                                    </div>
+                                    <div class="content">
+                                        <h2><a href="{% url 'web:shop_detail' book.id %}">{{book.author_name}}</a></h2>
+                                        <ul class="rating d-flex">
+                                            <li class="on"><i class="fa fa-star-o"></i></li>
+                                            <li class="on"><i class="fa fa-star-o"></i></li>
+                                            <li class="on"><i class="fa fa-star-o"></i></li>
+                                            <li class="on"><i class="fa fa-star-o"></i></li>
+                                            <li><i class="fa fa-star-o"></i></li>
+                                            <li><i class="fa fa-star-o"></i></li>
+                                        </ul>
+                                        <h6>{{book.language}}</h6>
+                                        <ul class="price__box">
+                                            <li>${{book.original_price}}</li>
+                                            <li class="old__price">${{book.del_price}}</li>
+                                            
+                                        </ul>
+                                        <b>{{book.year}}</b>
+                                        <p>{{book.details}}</p>
+                                        <ul class="cart__action d-flex">
+                                            <li class="cart"><a href="{{book.file}}" download>Download</a></li>
+                                           
+                                        </ul>
+
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                <!-- End Single Product -->
+
+                                
+
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <!-- End Shop Page -->
+ {% endblock %}
