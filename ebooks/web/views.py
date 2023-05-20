@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.db.models import Q
+
 from .models import Comment,Book
 
 
@@ -21,30 +23,21 @@ def shop(request):
     return render(request, 'web/shop-list.html', {'comments': comments})
 
 def book(request):
-    
 
-    year = request.GET.get('year')
-    language = request.GET.get('language')
-
-
-    if year:
-        book = book.filter(year=year)
-    if language:
-        book = book.filter(language=language)
 
     min_price = request.GET.get('min_price')
     max_price = request.GET.get('max_price')
+    book = Book.objects.all()
 
     if min_price and max_price:
-    # Assuming the 'price' field is present in the 'Book' model
         book = book.filter(price__gte=min_price, price__lte=max_price)
-
-  
-    context={
-   
-    'book':Book.objects.all(),
-
+    
+    context = {
+        'book': book,
+        'request': request
     }
+
+    
     return render(request, 'web/shop-grid.html',context)
 
 

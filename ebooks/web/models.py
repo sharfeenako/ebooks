@@ -32,7 +32,7 @@ class Book(models.Model):
     book_hoverimage=VersatileImageField(upload_to='book_image')
     author_name=models.CharField(max_length=100)
     del_price=models.CharField(max_length=50)
-    original_price=models.CharField(max_length=50)
+    price=models.CharField(max_length=50)
     file=models.FileField(upload_to='books')
     details=models.TextField()
     describtion=models.TextField()
